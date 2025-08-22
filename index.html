@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Pooja Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff8c00 0%, #ffa500 25%, #ffb347 50%, #ff7f00 75%, #ff6600 100%);
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Patterns */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
+            animation: backgroundMove 20s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            33% { transform: translateX(-20px) translateY(-10px) rotate(1deg); }
+            66% { transform: translateX(20px) translateY(10px) rotate(-1deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(255, 140, 0, 0.3);
+            animation: slideDown 1s ease-out;
+            border-bottom: 3px solid #ff8c00;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            animation: logoGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                filter: brightness(1) drop-shadow(0 0 5px rgba(255, 140, 0, 0.3));
+                transform: scale(1);
+            }
+            50% { 
+                filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 140, 0, 0.6));
+                transform: scale(1.05);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .nav-links li a:hover {
+            color: #ff6600;
+            background: rgba(255, 140, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 50%;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            transition: all 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 28px;
+            height: 3px;
+            background: #ff8c00;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* User Profile Section */
+        .user-profile {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin-top: 100px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            animation: avatarPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 140, 0, 0); }
+        }
+
+        .profile-info h2 {
+            color: #ff6600;
+            margin-bottom: 5px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ff8c00, #ff6600);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            animation: statFloat 3s ease-in-out infinite;
+        }
+
+        .stat-card:nth-child(2) { animation-delay: 0.5s; }
+        .stat-card:nth-child(3) { animation-delay: 1s; }
+        .stat-card:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes statFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🕉️';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.05);
+            animation: rotateOm 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateOm {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: heroEnter 2s ease-out;
+        }
+
+        @keyframes heroEnter {
+            from {
+                opacity: 0;
+                transform: translateY(100px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            animation: titleGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+            50% { 
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            animation: fadeInDelay 2.5s ease-out;
+        }
+
+        @keyframes fadeInDelay {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.4);
+            animation: ctaBounce 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes ctaBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(255, 140, 0, 0.6);
+            animation: none;
+        }
+
+        /* Enhanced Services Section */
+        .services {
+            padding: 120px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="temple" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 5 L35 15 L15 15 Z M10 15 L40 15 L40 40 L10 40 Z M15 20 L35 20 M15 25 L35 25 M15 30 L35 30 M15 35 L35 35" stroke="%23ffffff" stroke-width="0.5" opacity="0.1" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23temple)"/></svg>');
+            animation: patternMove 25s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes patternMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(100px); }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 80px;
+            animation: titleEnter 1.5s ease-out;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            margin: 20px auto;
+            border-radius: 2px;
+            animation: lineGrow 2s ease-out 0.5s both;
+        }
+
+        @keyframes lineGrow {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+
+        @keyframes titleEnter {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(255, 140, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: serviceCardEnter 1s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.2s; }
+        .service-card:nth-child(2) { animation-delay: 0.4s; }
+        .service-card:nth-child(3) { animation-delay: 0.6s; }
+        .service-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes serviceCardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(60px) rotateX(-15deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 70px rgba(255, 140, 0, 0.4);
+        }
+
+        .service-icon {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            animation: iconFloat 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .service-card:nth-child(1) .service-icon { animation-delay: 0s; }
+        .service-card:nth-child(2) .service-icon { animation-delay: 0.7s; }
+        .service-card:nth-child(3) .service-icon { animation-delay: 1.4s; }
+        .service-card:nth-child(4) .service-icon { animation-delay: 2.1s; }
+
+        @keyframes iconFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                filter: drop-shadow(0 5px 10px rgba(255, 140, 0, 0.2));
+            }
+            33% { 
+                transform: translateY(-10px) rotate(5deg); 
+                filter: drop-shadow(0 15px 20px rgba(255, 140, 0, 0.3));
+            }
+            66% { 
+                transform: translateY(5px) rotate(-3deg); 
+                filter: drop-shadow(0 8px 15px rgba(255, 140, 0, 0.25));
+            }
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff6600;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Management */
+        .contact-management {
+            padding: 120px 0;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(255, 140, 0, 0.2);
+            animation: slideInFromLeft 1.2s ease-out;
+            border-top: 5px solid #ff8c00;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-container h3 {
+            color: #ff6600;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ff6600;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px;
+            border: 3px solid #ffe5cc;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            background: rgba(255, 248, 240, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #ff8c00;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.15);
+            transform: scale(1.02);
+            background: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.4);
+        }
+
+        .contacts-display {
+            animation: slideInFromRight 1.2s ease-out;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contacts-display h3 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .contact-list {
+            max-height: 600px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #ff8c00 rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .contact-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact-list::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            border-radius: 10px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.15);
+            transition: all 0.4s ease;
+            animation: contactEnter 0.6s ease-out;
+            border-left: 5px solid #ff8c00;
+        }
+
+        @keyframes contactEnter {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px) scale(1.02);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.25);
+        }
+
+        .contact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-name {
+            font-weight: bold;
+            color: #ff6600;
+            font-size: 1.3rem;
+        }
+
+        .contact-service {
+            background: linear-gradient(45deg, #ff8c00, #ff6600);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .contact-details {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-details p {
+            margin-bottom: 5px;
+        }
+
+        /* Locations Section */
+        .locations {
+            padding: 120px 0;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .location-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.15);
+            transition: all 0.5s ease;
+            animation: locationEnter 1s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+            animation: locationRotate 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes locationRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .location-card:nth-child(1) { animation-delay: 0.1s; }
+        .location-card:nth-child(2) { animation-delay: 0.3s; }
+        .location-card:nth-child(3) { animation-delay: 0.5s; }
+        .location-card:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes locationEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateY(-15deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0);
+            }
+        }
+
+        .location-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(255, 140, 0, 0.3);
+        }
+
+        .location-icon {
+            font-size: 3.5rem;
+            color: #ff8c00;
+            margin-bottom: 20px;
+            animation: locationIconBounce 2.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes locationIconBounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            25% { transform: translateY(-8px) scale(1.1); }
+            50% { transform: translateY(0px) scale(1); }
+            75% { transform: translateY(-4px) scale(1.05); }
+        }
+
+        .location-card h3 {
+            font-size: 1.6rem;
+            color: #ff6600;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .location-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 140, 0, 0.1));
+            color: white;
+            text-align: center;
+            padding: 60px 0 40px;
+            animation: footerSlideUp 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff8c00, #ff6600, #ff8c00);
+            animation: gradientMove 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes footerSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ff8c00;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.4s ease;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 140, 0, 0.1);
+        }
+
+        .social-links a:hover {
+            color: #ff8c00;
+            transform: scale(1.3) rotate(15deg);
+            background: rgba(255, 140, 0, 0.2);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: fixed;
+            font-size: 1.5rem;
+            color: rgba(255, 215, 0, 0.15);
+            z-index: -1;
+            animation: floatAround 20s linear infinite;
+            pointer-events: none;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 15%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 70%;
+            right: 5%;
+            animation-delay: -7s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 25%;
+            left: 15%;
+            animation-delay: -14s;
+        }
+
+        .floating-element:nth-child(4) {
+            top: 40%;
+            right: 20%;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) translateX(20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(-10px) translateX(-15px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(20px) translateX(-25px) rotate(270deg);
+            }
+            100% {
+                transform: translateY(0px) translateX(0px) rotate(360deg);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .service-card {
+                padding: 40px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="floating-element">🕉️</div>
+    <div class="floating-element">🪔</div>
+    <div class="floating-element">🌸</div>
+    <div class="floating-element">🛕</div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">🕉️ श्री Pooja Services</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">🏠 Home</a></li>
+                    <li><a href="#services">🙏 Services</a></li>
+                    <li><a href="#contacts">👥 Contacts</a></li>
+                    <li><a href="#locations">📍 Locations</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobileMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- User Profile Section -->
+    <section class="user-profile">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar" id="userAvatar">👤</div>
+                <div class="profile-info">
+                    <h2 id="userName">Welcome, Pandit Ji</h2>
+                    <p id="userRole">Divine Service Provider</p>
+                    <p id="userLocation">📍 Mumbai, Maharashtra</p>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <h3 id="totalClients">25</h3>
+                    <p>Total Clients</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalServices">156</h3>
+                    <p>Services Completed</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="activeBookings">8</h3>
+                    <p>Active Bookings</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="rating">4.9 ⭐</h3>
+                    <p>Customer Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>पवित्र पूजा सेवाएं</h1>
+            <p>Authentic Vedic rituals performed with devotion and tradition</p>
+            <a href="#services" class="cta-button">🕉️ Discover Sacred Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">🙏 Our Divine Services</h2>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Management Section -->
+    <section id="contacts" class="contact-management">
+        <div class="container">
+            <h2 class="section-title">👥 Client Management System</h2>
+            <div class="management-grid">
+                <div class="form-container">
+                    <h3>🆕 Add New Client</h3>
+                    <form id="clientForm">
+                        <div class="form-group">
+                            <label>🙋‍♂️ Client Name</label>
+                            <input type="text" id="clientName" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📞 Phone Number</label>
+                            <input type="tel" id="clientPhone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📧 Email Address</label>
+                            <input type="email" id="clientEmail" placeholder="client@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>🙏 Service Required</label>
+                            <select id="serviceType" required>
+                                <option value="">Select Service Type</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>📍 Location</label>
+                            <input type="text" id="clientLocation" placeholder="Full address" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📅 Preferred Date</label>
+                            <input type="date" id="preferredDate">
+                        </div>
+                        <div class="form-group">
+                            <label>📝 Special Requirements</label>
+                            <textarea id="clientNotes" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">✨ Add Client to Database</button>
+                    </form>
+                </div>
+                <div class="contacts-display">
+                    <h3>📊 Client Database</h3>
+                    <div id="contactList" class="contact-list">
+                        <!-- Contacts will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2 class="section-title">📍 Service Coverage Areas</h2>
+            <div class="locations-grid" id="locationsGrid">
+                <!-- Locations will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>🕉️ श्री Divine Pooja Services</h3>
+                <p>Connecting souls with the divine through authentic Vedic traditions</p>
+                <div class="social-links">
+                    <a href="#" title="WhatsApp">📱</a>
+                    <a href="#" title="Email">📧</a>
+                    <a href="#" title="Website">🌐</a>
+                    <a href="#" title="Phone">📞</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Divine Pooja Services. सर्वे भवन्तु सुखिनः | May all beings be happy</p>
+        </div>
+    </footer>
+
+    <script>
+        // JSON Data Structure for User and Services
+        const userData = {
+            "user": {
+                "name": "Pandit Rajesh Sharma",
+                "role": "Senior Vedic Priest",
+                "location": "Mumbai, Maharashtra",
+                "avatar": "🧙‍♂️",
+                "stats": {
+                    "totalClients": 25,
+                    "servicesCompleted": 156,
+                    "activeBookings": 8,
+                    "rating": 4.9
+                },
+                "expertise": ["Vedic Rituals", "Wedding Ceremonies", "Spiritual Healing", "Festival Celebrations"]
+            },
+            "services": [
+                {
+                    "id": 1,
+                    "name": "Griha Pravesh Pooja",
+                    "icon": "🏠",
+                    "description": "Sacred housewarming ceremony with Vastu Shanti and blessing rituals for prosperity and peace in new homes.",
+                    "duration": "2-3 hours",
+                    "price": "₹2,100-5,100"
+                },
+                {
+                    "id": 2,
+                    "name": "Vivah Sanskar",
+                    "icon": "💒",
+                    "description": "Complete Hindu wedding ceremony including Haldi, Mehendi, Sangam, and Saptapadi with authentic Vedic mantras.",
+                    "duration": "Full day",
+                    "price": "₹11,000-25,000"
+                },
+                {
+                    "id": 3,
+                    "name": "Satyanarayan Katha",
+                    "icon": "📿",
+                    "description": "Monthly or special occasion worship of Lord Vishnu with complete katha recitation and prasad distribution.",
+                    "duration": "1.5-2 hours",
+                    "price": "₹1,100-2,100"
+                },
+                {
+                    "id": 4,
+                    "name": "Ganesh Chaturthi",
+                    "icon": "🐘",
+                    "description": "11-day Ganesha festival celebration with proper installation, daily aarti, and immersion ceremony.",
+                    "duration": "11 days",
+                    "price": "₹5,100-15,100"
+                },
+                {
+                    "id": 5,
+                    "name": "Durga Pooja",
+                    "icon": "🗡️",
+                    "description": "9-day Navratri celebration with Durga Saptashati path, daily aarti, and cultural programs.",
+                    "duration": "9 days",
+                    "price": "₹7,100-21,100"
+                },
+                {
+                    "id": 6,
+                    "name": "Thread Ceremony",
+                    "icon": "🎋",
+                    "description": "Sacred Upanayana (Janeu) ceremony for boys with Gayatri Mantra initiation and Vedic education beginning.",
+                    "duration": "4-5 hours",
+                    "price": "₹3,100-7,100"
+                },
+                {
+                    "id": 7,
+                    "name": "Annaprashan",
+                    "icon": "🍚",
+                    "description": "First rice feeding ceremony for babies with blessings for healthy growth and prosperity.",
+                    "duration": "1-2 hours",
+                    "price": "₹1,100-3,100"
+                },
+                {
+                    "id": 8,
+                    "name": "Rudrabhishek",
+                    "icon": "🔱",
+                    "description": "Powerful Lord Shiva worship with 108 names chanting and abhishek for removing obstacles and negativity.",
+                    "duration": "2-3 hours",
+                    "price": "₹2,100-5,100"
+                }
+            ],
+            "locations": [
+                {
+                    "name": "Mumbai Central",
+                    "icon": "🏙️",
+                    "coverage": "Dadar, Parel, Lower Parel, Worli, Mahalaxmi, Grant Road and surrounding areas",
+                    "responseTime": "30 minutes"
+                },
+                {
+                    "name": "Western Suburbs",
+                    "icon": "🌅",
+                    "coverage": "Andheri, Bandra, Juhu, Versova, Goregaon, Malad, Borivali and adjoining areas",
+                    "responseTime": "45 minutes"
+                },
+                {
+                    "name": "Eastern Suburbs",
+                    "icon": "🌄",
+                    "coverage": "Ghatkopar, Powai, Vikhroli, Mulund, Thane, Kalyan and neighboring regions",
+                    "responseTime": "1 hour"
+                },
+                {
+                    "name": "Navi Mumbai",
+                    "icon": "🏘️",
+                    "coverage": "Vashi, Nerul, CBD Belapur, Kharghar, Panvel and surrounding townships",
+                    "responseTime": "1 hour"
+                }
+            ]
+        };
+
+        let clients = [];
+
+        // Initialize the application
+        function initializeApp() {
+            loadUserProfile();
+            loadServices();
+            loadLocations();
+            populateServiceOptions();
+            loadSampleClients();
+        }
+
+        // Load user profile
+        function loadUserProfile() {
+            const user = userData.user;
+            document.getElementById('userName').textContent = `Welcome, ${user.name}`;
+            document.getElementById('userRole').textContent = user.role;
+            document.getElementById('userLocation').textContent = `📍 ${user.location}`;
+            document.getElementById('userAvatar').textContent = user.avatar;
+            
+            document.getElementById('totalClients').textContent = user.stats.totalClients;
+            document.getElementById('totalServices').textContent = user.stats.servicesCompleted;
+            document.getElementById('activeBookings').textContent = user.stats.activeBookings;
+            document.getElementById('rating').textContent = `${user.stats.rating} ⭐`;
+        }
+
+        // Load services dynamically
+        function loadServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            const services = userData.services.slice(0, 4); // Show first 4 services
+            
+            servicesGrid.innerHTML = services.map(service => `
+                <div class="service-card">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #ffe5cc;">
+                        <small style="color: #ff8c00; font-weight: 600;">
+                            ⏱️ ${service.duration} | 💰 ${service.price}
+                        </small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load locations
+        function loadLocations() {
+            const locationsGrid = document.getElementById('locationsGrid');
+            
+            locationsGrid.innerHTML = userData.locations.map(location => `
+                <div class="location-card">
+                    <div class="location-icon">${location.icon}</div>
+                    <h3>${location.name}</h3>
+                    <p>${location.coverage}</p>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #ffe5cc;">
+                        <small style="color: #ff8c00; font-weight: 600;">
+                            ⚡ Response: ${location.responseTime}
+                        </small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Populate service options in form
+        function populateServiceOptions() {
+            const serviceSelect = document.getElementById('serviceType');
+            
+            userData.services.forEach(service => {
+                const option = document.createElement('option');
+                option.value = service.name;
+                option.textContent = `${service.icon} ${service.name}`;
+                serviceSelect.appendChild(option);
+            });
+        }
+
+        // Form submission with enhanced animation
+        document.getElementById('clientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const client = {
+                id: Date.now(),
+                name: document.getElementById('clientName').value,
+                phone: document.getElementById('clientPhone').value,
+                email: document.getElementById('clientEmail').value,
+                service: document.getElementById('serviceType').value,
+                location: document.getElementById('clientLocation').value,
+                preferredDate: document.getElementById('preferredDate').value,
+                notes: document.getElementById('clientNotes').value,
+                addedDate: new Date().toLocaleDateString('hi-IN'),
+                status: 'New'
+            };
+            
+            clients.push(client);
+            displayClients();
+            this.reset();
+            
+            // Enhanced success animation
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.style.background = 'linear-gradient(45deg, #4ecdc4, #45b7aa)';
+            submitBtn.textContent = '✅ Client Added Successfully!';
+            submitBtn.style.transform = 'scale(1.05)';
+            
+            setTimeout(() => {
+                submitBtn.style.background = 'linear-gradient(45deg, #ff8c00, #ff6600)';
+                submitBtn.textContent = originalText;
+                submitBtn.style.transform = 'scale(1)';
+            }, 3000);
+
+            // Update stats
+            updateUserStats();
+        });
+
+        // Display clients with enhanced styling
+        function displayClients() {
+            const contactList = document.getElementById('contactList');
+            
+            if (clients.length === 0) {
+                contactList.innerHTML = `
+                    <div style="text-align: center; color: white; padding: 60px 20px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">👥</div>
+                        <h3 style="margin-bottom: 10px;">No clients registered yet</h3>
+                        <p>Add your first client to start managing your pooja services!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            contactList.innerHTML = clients.map((client, index) => {
+                const serviceIcon = userData.services.find(s => s.name === client.service)?.icon || '🙏';
+                return `
+                    <div class="contact-item" style="animation-delay: ${index * 0.1}s">
+                        <div class="contact-header">
+                            <div class="contact-name">${client.name}</div>
+                            <div class="contact-service">${serviceIcon} ${client.service}</div>
+                        </div>
+                        <div class="contact-details">
+                            <p><strong>📞</strong> ${client.phone}</p>
+                            ${client.email ? `<p><strong>📧</strong> ${client.email}</p>` : ''}
+                            <p><strong>📍</strong> ${client.location}</p>
+                            ${client.preferredDate ? `<p><strong>📅</strong> Preferred: ${new Date(client.preferredDate).toLocaleDateString('hi-IN')}</p>` : ''}
+                            ${client.notes ? `<p><strong>📝</strong> ${client.notes}</p>` : ''}
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 10px; border-top: 1px solid #ffe5cc;">
+                                <small style="color: #999;">Added: ${client.addedDate}</small>
+                                <span style="background: linear-gradient(45deg, #4ecdc4, #45b7aa); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem;">
+                                    ${client.status}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update user statistics
+        function updateUserStats() {
+            const totalClients = clients.length;
+            document.getElementById('totalClients').textContent = userData.user.stats.totalClients + totalClients;
+        }
+
+        // Load sample clients
+        function loadSampleClients() {
+            const sampleClients = [
+                {
+                    id: 1,
+                    name: "श्री राजेश शर्मा",
+                    phone: "+91 98765 43210",
+                    email: "rajesh.sharma@gmail.com",
+                    service: "Griha Pravesh Pooja",
+                    location: "Andheri West, Mumbai - 400058",
+                    preferredDate: "2025-09-15",
+                    notes: "नए घर की शुद्धिकरण पूजा चाहिए",
+                    addedDate: "20/08/2025",
+                    status: "Confirmed"
+                },
+                {
+                    id: 2,
+                    name: "श्रीमती प्रिया पटेल",
+                    phone: "+91 87654 32109",
+                    email: "priya.patel@yahoo.com",
+                    service: "Vivah Sanskar",
+                    location: "Borivali East, Mumbai - 400066",
+                    preferredDate: "2025-12-10",
+                    notes: "पारंपरिक गुजराती विवाह संस्कार - दिसंबर में",
+                    addedDate: "18/08/2025",
+                    status: "Planning"
+                },
+                {
+                    id: 3,
+                    name: "श्री आनंद कुमार",
+                    phone: "+91 76543 21098",
+                    email: "anand.kumar@outlook.com",
+                    service: "Satyanarayan Katha",
+                    location: "Ghatkopar West, Mumbai - 400084",
+                    preferredDate: "2025-08-30",
+                    notes: "मासिक सत्यनारायण व्रत कथा",
+                    addedDate: "22/08/2025",
+                    status: "New"
+                }
+            ];
+            
+            clients = sampleClients;
+            displayClients();
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu functionality
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            
+            // Animate hamburger menu
+            this.classList.toggle('active');
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .location-card, .contact-item').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeApp);
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
